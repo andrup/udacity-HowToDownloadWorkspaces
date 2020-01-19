@@ -8,8 +8,8 @@ Notebook.
 - Paste the [code snippet
 below](#download-snippet) into the code cell in the new Jupyter Notebook
 - Run the code cell that we just created. This should create a file called `workspace_archive.tar.gz` in the workspace.
-- Click on Jupyter logo (top left of the screen) to open the directory browser.
-This will show all files and directories in the workspace.
+- Click on Jupyter logo (top left of the screen) to open the directory browser. Click `Leave` when it prompts to save the changes.
+- This will show all files and directories in the workspace.
 - Find `workspace_archive.tar.gz` and download it by checking the box before the file and clicking `Download` button under `Files` tab.
 - On a unix terminal, navigate to `Downloads` dir and run `tar -xvzf workspace_archive.tar.gz`
 - This should create a directory structure `home/workspace` which contains all the files from the Udacity workspace. 
