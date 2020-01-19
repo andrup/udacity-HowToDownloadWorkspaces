@@ -7,9 +7,12 @@ To download all files in a Jupyter workspace:
 Notebook.
 - Paste the [code snippet
 below](#download-snippet) into the code cell in the new Jupyter Notebook
+- Run the code cell that we just created. This should create a file called `workspace_archive.tar.gz` in the workspace.
 - Click on Jupyter logo (top left of the screen) to open the directory browser.
 This will show all files and directories in the workspace.
-- Find `workspace_archive.tar`. download it.
+- Find `workspace_archive.tar.gz` and download it by checking the box before the file and clicking `Download` button under `Files` tab.
+- On a unix terminal, navigate to `Downloads` dir and run `tar - xvzf workspace_archive.tar.gz`
+- This should create a directory structure `home/workspace` which contains all the files from the Udacity workspace. 
 
 ### Download extra data located outside of current workspace
 
@@ -42,7 +45,7 @@ below](#download-snippet) but put it in a Python file instead.
 ## Download Snippet
 
 The snippet below compresses all files in a workspace and put them in
-`workspace_archive.tar` file.
+`workspace_archive.tar.gz` file.
 
 ```python
 """ Source:
@@ -62,8 +65,8 @@ def recursive_files(dir_name='.', ignore=None):
 
             yield os.path.join(dir_name, file_name)
 
-def make_tar_file(dir_name='.', target_file_name='workspace_archive.tar', ignore=None):
-    tar = tarfile.open(target_file_name, 'w')
+def make_tar_file(dir_name='.', target_file_name='workspace_archive.tar.gz', ignore=None):
+    tar = tarfile.open(target_file_name, 'w:gz')
 
     for file_name in recursive_files(dir_name, ignore):
         tar.add(file_name)
@@ -71,8 +74,8 @@ def make_tar_file(dir_name='.', target_file_name='workspace_archive.tar', ignore
     tar.close()
 
 
-dir_name = '.'
-target_file_name = 'workspace_archive.tar'
+dir_name = os.getcwd()
+target_file_name = 'workspace_archive.tar.gz'
 # List of files/directories to ignore
 ignore = {'.ipynb_checkpoints', '__pycache__', target_file_name}
 
